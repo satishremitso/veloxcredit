@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Velox Credit — Home, Car, Personal & Business Loans</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+        :root {
+            --navy: #0B1B3B;
+            --navy-hover: #13245a;
+            --theme: #4EAFFF;
+            --theme-dark: #2085ed;
+            --theme-light: rgba(78, 175, 255, 0.12);
+            --gradient-theme: linear-gradient(135deg, #4EAFFF 0%, #2085ed 100%);
+            --text-main: #1a2238;
+            --muted-text: #5b6478;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Utilities */
+        .text-gradient {
+            background: var(--gradient-theme);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .bg-light-theme {
+            background-color: #f4f9ff;
+        }
+
+        /* Topbar & Navbar */
+        .topbar { background-color: var(--navy); color: #fff; font-size: 13px; }
+        .topbar a { color: #fff; text-decoration: none; opacity: 0.9; margin-right: 15px; }
+        .topbar a:hover { opacity: 1; text-decoration: underline; }
+        
+        .navbar-brand { font-weight: 800; font-size: 24px; letter-spacing: 1px; color: var(--navy) !important; }
+        .navbar-brand span { color: var(--theme); }
+        .nav-link { font-weight: 500; color: var(--navy) !important; transition: 0.2s; }
+        .nav-link:hover { color: var(--theme) !important; }
+
+        /* Buttons */
+        .btn-theme { 
+            background: var(--gradient-theme); 
+            color: #fff; 
+            font-weight: 600; 
+            padding: 12px 28px; 
+            border-radius: 8px; 
+            border: none;
+            transition: all 0.3s ease; 
+            box-shadow: 0 4px 15px rgba(78, 175, 255, 0.3);
+        }
+        .btn-theme:hover { 
+            transform: translateY(-2px);
+            color: #fff; 
+            box-shadow: 0 6px 20px rgba(78, 175, 255, 0.4);
+        }
+        .btn-outline-theme { 
+            border: 2px solid var(--theme); 
+            color: var(--theme-dark); 
+            font-weight: 600; 
+            padding: 10px 26px; 
+            border-radius: 8px; 
+            transition: all 0.3s ease; 
+            background: transparent;
+        }
+        .btn-outline-theme:hover { 
+            background: var(--gradient-theme); 
+            color: #fff; 
+            border-color: transparent;
+        }
+
+        /* Hero Section */
+        .hero-section { background: linear-gradient(180deg, #eef6ff 0%, #ffffff 100%); padding: 80px 0; }
+        .hero-title { font-size: 3.2rem; font-weight: 800; color: var(--navy); line-height: 1.2; }
+        .badge-custom { background-color: var(--theme-light); color: var(--theme-dark); padding: 8px 16px; border-radius: 50px; font-weight: 600; font-size: 13px; display: inline-block; margin: 0 5px 10px 0; border: 1px solid rgba(78, 175, 255, 0.2); }
+
+        /* Form Card */
+        .lead-form-card { background: #fff; border-radius: 16px; padding: 35px; box-shadow: 0 20px 50px rgba(11,27,59,.08); border: 1px solid #E6EAF2; position: relative; }
+        .lead-form-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: var(--gradient-theme); border-radius: 16px 16px 0 0; }
+        .form-control, .form-select { padding: 12px 15px; border-radius: 8px; border: 1px solid #E6EAF2; background-color: #fafbfc; }
+        .form-control:focus, .form-select:focus { border-color: var(--theme); box-shadow: 0 0 0 3px var(--theme-light); background-color: #fff; }
+        
+        /* Trust Bar & Lenders */
+        .trust-bar { background-color: var(--navy); color: #fff; padding: 30px 0; }
+        .trust-stat h4 { color: var(--theme); font-weight: 700; margin-bottom: 5px; }
+        .lender-strip { background: #fff; border-bottom: 1px solid #E6EAF2; padding: 30px 0; }
+        .lender-logos { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; opacity: 0.5; align-items: center; }
+        .lender-logos h5 { margin: 0; font-weight: 800; font-size: 20px; letter-spacing: -0.5px; }
+
+        /* Process / How It Works */
+        .step-icon { width: 70px; height: 70px; border-radius: 50%; background: var(--gradient-theme); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 700; margin: 0 auto 20px; box-shadow: 0 10px 20px rgba(78, 175, 255, 0.2); }
+        .process-line { position: relative; }
+
+        /* Product Cards */
+        .product-card { border: 1px solid #E6EAF2; border-radius: 16px; padding: 30px; transition: 0.3s; height: 100%; background: #fff; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(78, 175, 255, 0.1); border-color: var(--theme); }
+        .p-icon { width: 60px; height: 60px; border-radius: 12px; background: var(--gradient-theme); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 20px; }
+
+        /* Calculator Section */
+        .calc-section { background-color: #f4f9ff; padding: 80px 0; }
+        .calc-box { background: #fff; border-radius: 16px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .calc-result { background: var(--gradient-theme); color: #fff; border-radius: 12px; padding: 30px; text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+        .calc-result h2 { font-weight: 800; font-size: 3rem; margin: 10px 0; color: #fff; }
+        .form-range::-webkit-slider-thumb { background: var(--theme); }
+
+        /* FAQ Section */
+        .accordion-button:not(.collapsed) { background-color: var(--theme-light); color: var(--theme-dark); box-shadow: none; }
+        .accordion-button:focus { box-shadow: none; border-color: rgba(0,0,0,.125); }
+        .accordion-item { border-radius: 8px !important; border: 1px solid #E6EAF2; margin-bottom: 10px; overflow: hidden; }
+
+        /* Footer & Compliance */
+        footer { background-color: var(--navy); color: #cdd5e3; padding: 60px 0 30px; }
+        footer h5 { color: #fff; font-weight: 600; margin-bottom: 20px; }
+        footer a { color: #cdd5e3; text-decoration: none; transition: 0.2s; }
+        footer a:hover { color: var(--theme); }
+        footer ul { list-style: none; padding: 0; }
+        footer li { margin-bottom: 10px; font-size: 14px; }
+        .compliance-text { font-size: 12px; opacity: 0.6; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 40px; text-align: justify; line-height: 1.5; }
+
+        /* Responsive */
+        @media(max-width: 991px) {
+            .hero-title { font-size: 2.2rem; }
+            .trust-stat { margin-bottom: 20px; text-align: center; }
+            .lender-logos { gap: 20px; }
+            .calc-box { padding: 25px; }
+            section { padding: 50px 0 !important; }
+            .hero-section { padding: 50px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Topbar (Ads Compliance - readily available contact info) -->
+    <div class="topbar py-2 d-none d-md-block">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div>
+                <a href="#">About Us</a>
+                <a href="#">Join as Broker</a>
+                <a href="#faq">FAQs</a>
+            </div>
+            <div>
+                <span class="me-3"><i class="bi bi-telephone-fill text-theme"></i> 1800 VELOX 1</span>
+                <span><i class="bi bi-envelope-fill text-theme"></i> support@veloxpays.com</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg bg-white sticky-top border-bottom shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">VELOX <span class="text-gradient">CREDIT</span></a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center gap-3">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#how-it-works">How it Works</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#products">Loan Types</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#calculator">Calculator</a></li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <a href="#lead-form" class="btn btn-theme w-100">Talk to Loan Advisor</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <!-- Hero Content -->
+                <div class="col-lg-6 text-center text-lg-start">
+                    <div class="mb-4">
+                        <span class="badge-custom"><i class="bi bi-shield-check"></i> No initial credit hit*</span>
+                        <span class="badge-custom"><i class="bi bi-bank"></i> 60+ lenders</span>
+                        <span class="badge-custom"><i class="bi bi-laptop"></i> 100% online</span>
+                    </div>
+                    <h1 class="hero-title mb-4">Loans that move at the <span class="text-gradient">speed of you.</span></h1>
+                    <p class="lead text-muted mb-4 px-3 px-lg-0">From your dream home to your next car, business growth or that long-overdue holiday — Velox Credit matches you with the right lender, fast. Compare options with zero obligation.</p>
+                    <div class="d-flex gap-3 justify-content-center justify-content-lg-start flex-wrap">
+                        <a href="#lead-form" class="btn btn-theme">Get Your Free Quote</a>
+                        <a href="#products" class="btn btn-outline-theme">Explore Loans</a>
+                    </div>
+                </div>
+
+                <!-- Lead Form -->
+                <div class="col-lg-6">
+                    <form class="lead-form-card" id="lead-form">
+                        <h3 class="fw-bold mb-2">Get matched in 60 seconds</h3>
+                        <p class="text-muted small mb-4">Tell us a little about you — a licensed loan advisor will reach out securely.</p>
+
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Full Name *</label>
+                            <input type="text" name="name" class="form-control" required placeholder="Jane Smith">
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <label class="form-label small fw-bold">Phone *</label>
+                                <input type="tel" name="phone" class="form-control" required placeholder="04xx xxx xxx">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold">Email *</label>
+                                <input type="email" name="email" class="form-control" required placeholder="you@email.com">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">What are you looking to finance? *</label>
+                            <select name="product" class="form-select" required>
+                                <option value="">Select a loan type...</option>
+                                <option>Home Loan / Mortgage</option>
+                                <option>Car Finance</option>
+                                <option>Personal Loan</option>
+                                <option>Business Loan</option>
+                                <option>Equipment/Asset Finance</option>
+                            </select>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <label class="form-label small fw-bold">Estimated Amount *</label>
+                                <select name="amount" class="form-select" required>
+                                    <option value="">Select range...</option>
+                                    <option>Under $10,000</option>
+                                    <option>$10,000 – $50,000</option>
+                                    <option>$50,000 – $150,000</option>
+                                    <option>$150,000 – $500,000</option>
+                                    <option>Over $500,000</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold">Employment *</label>
+                                <select name="employment" class="form-select" required>
+                                    <option value="">Select status...</option>
+                                    <option>Full-time (PAYG)</option>
+                                    <option>Self-employed / ABN</option>
+                                    <option>Part-time / Casual</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-theme w-100 mb-3 fs-5">Check My Eligibility &rarr;</button>
+                        <p class="text-center small text-muted mb-0">
+                            <i class="bi bi-lock-fill"></i> Your data is secure. *Initial quote uses a soft check. A hard credit inquiry is only done upon formal application.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lender Strip (Social Proof) -->
+    <div class="lender-strip">
+        <div class="container text-center">
+            <p class="text-muted small fw-bold text-uppercase mb-3" style="letter-spacing: 1px;">Partnering with 60+ of Australia's Leading Lenders</p>
+            <div class="lender-logos">
+                <h5>ANZ</h5>
+                <h5>Westpac</h5>
+                <h5>CBA</h5>
+                <h5>NAB</h5>
+                <h5>Macquarie</h5>
+                <h5>Liberty</h5>
+                <h5>Pepper Money</h5>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trust Stats -->
+    <div class="trust-bar">
+        <div class="container">
+            <div class="row text-center align-items-center">
+                <div class="col-md col-6 trust-stat">
+                    <h4>60+</h4>
+                    <span class="small">Lender Panel</span>
+                </div>
+                <div class="col-md col-6 trust-stat">
+                    <h4>5.0 <i class="bi bi-star-fill small text-warning"></i></h4>
+                    <span class="small">200+ Reviews</span>
+                </div>
+                <div class="col-md col-6 trust-stat">
+                    <h4>$0</h4>
+                    <span class="small">Broker Fees*</span>
+                </div>
+                <div class="col-md col-6 trust-stat">
+                    <h4>24/7</h4>
+                    <span class="small">Online Application</span>
+                </div>
+                <div class="col-md col-12 trust-stat mt-3 mt-md-0">
+                    <h4>AU</h4>
+                    <span class="small">Australia-wide</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Process Section / How it works -->
+    <section class="py-5 bg-white" id="how-it-works">
+        <div class="container py-5">
+            <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+                <h2 class="fw-bold mb-3">Your Loan, <span class="text-gradient">Simplified</span></h2>
+                <p class="text-muted">We handle the hard work so you can focus on your goals. Here is how our seamless process works.</p>
+            </div>
+            
+            <div class="row g-4 text-center process-line">
+                <div class="col-md-4 position-relative">
+                    <div class="step-icon"><i class="bi bi-card-text"></i></div>
+                    <h5 class="fw-bold">1. Apply Online</h5>
+                    <p class="text-muted small px-3">Fill out our quick 60-second form. We'll gather basic details with zero impact on your credit score.</p>
+                </div>
+                <div class="col-md-4 position-relative">
+                    <div class="step-icon"><i class="bi bi-search"></i></div>
+                    <h5 class="fw-bold">2. We Compare Options</h5>
+                    <p class="text-muted small px-3">Your dedicated advisor compares 60+ lenders to find the lowest rate and best structure for your unique profile.</p>
+                </div>
+                <div class="col-md-4 position-relative">
+                    <div class="step-icon"><i class="bi bi-check-circle"></i></div>
+                    <h5 class="fw-bold">3. Get Approved & Funded</h5>
+                    <p class="text-muted small px-3">We handle the paperwork and negotiations. Once approved, funds are typically transferred directly to you or the seller.</p>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="#lead-form" class="btn btn-theme">Start Step 1 Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="py-5 bg-light-theme" id="products">
+        <div class="container py-5">
+            <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+                <h2 class="fw-bold mb-3">One broker. <span class="text-gradient">Every loan</span> you'll ever need.</h2>
+                <p class="text-muted">We compare dozens of lenders so you don't have to. Secure the most competitive rates available to your unique profile.</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card">
+                        <div class="p-icon"><i class="bi bi-house-door-fill"></i></div>
+                        <h4 class="fw-bold">Home Loan</h4>
+                        <p class="text-muted small">First home, investment, SMSF, commercial or construction — PAYG or ABN, we navigate the complex market for you.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card">
+                        <div class="p-icon"><i class="bi bi-car-front-fill"></i></div>
+                        <h4 class="fw-bold">Car Finance</h4>
+                        <p class="text-muted small">Personalised car finance for everyday Australians. Dealership or private sales with rapid approvals.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card">
+                        <div class="p-icon"><i class="bi bi-cash-stack"></i></div>
+                        <h4 class="fw-bold">Personal Loan</h4>
+                        <p class="text-muted small">Consolidate debt, fund renovations, travel, weddings, medical expenses or anything life throws at you.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card">
+                        <div class="p-icon"><i class="bi bi-graph-up-arrow"></i></div>
+                        <h4 class="fw-bold">Business Loan</h4>
+                        <p class="text-muted small">Dedicated business specialists to fund working capital, expansion, and the growth your enterprise needs.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card">
+                        <div class="p-icon"><i class="bi bi-gear-fill"></i></div>
+                        <h4 class="fw-bold">Equipment Finance</h4>
+                        <p class="text-muted small">Fund the tools, machinery, and vehicles your business needs to operate without taking a massive cash-flow hit.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card">
+                        <div class="p-icon"><i class="bi bi-truck-front-fill"></i></div>
+                        <h4 class="fw-bold">Recreational Finance</h4>
+                        <p class="text-muted small">Hit the open road or water. Competitive rates for boats, caravans, motorcycles, and jet skis.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loan Calculator Section -->
+    <section class="calc-section" id="calculator">
+        <div class="container">
+            <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+                <h2 class="fw-bold mb-3">Loan Repayment <span class="text-gradient">Calculator</span></h2>
+                <p class="text-muted">Estimate your potential monthly repayments. This tool provides an estimate only and does not constitute a quote or offer of finance.</p>
+            </div>
+
+            <div class="calc-box">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Loan Amount ($)</label>
+                            <input type="number" id="calcAmount" class="form-control form-control-lg" value="30000" oninput="calculateLoan()">
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Estimated Interest Rate (% p.a.)</label>
+                            <input type="number" id="calcRate" class="form-control form-control-lg" value="7.5" step="0.1" oninput="calculateLoan()">
+                            <small class="text-muted">Rates vary by lender and your credit profile.</small>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Loan Term (Years)</label>
+                            <input type="range" id="calcYears" class="form-range" min="1" max="30" value="5" oninput="document.getElementById('yearLabel').innerText = this.value + ' Years'; calculateLoan();">
+                            <div class="text-end fw-bold" style="color: var(--theme-dark);" id="yearLabel">5 Years</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="calc-result shadow-lg">
+                            <p class="mb-0 text-uppercase fw-bold text-white-50" style="letter-spacing: 1px;">Estimated Monthly Repayment</p>
+                            <h2 id="calcMonthlyResult">$601.14</h2>
+                            <hr class="border-light opacity-25 my-4">
+                            <div class="d-flex justify-content-between text-start small mb-2 text-white">
+                                <span>Total Principal:</span>
+                                <strong id="calcTotalPrincipal">$30,000.00</strong>
+                            </div>
+                            <div class="d-flex justify-content-between text-start small text-white">
+                                <span>Estimated Total Interest:</span>
+                                <strong id="calcTotalInterest">$6,068.40</strong>
+                            </div>
+                            <a href="#lead-form" class="btn btn-light w-100 mt-4 fw-bold" style="color: var(--theme-dark);">Get an Exact Quote</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section class="py-5 bg-white" id="why">
+        <div class="container py-5">
+            <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+                <h2 class="fw-bold mb-3">The <span class="text-gradient">Velox</span> Advantage</h2>
+                <p class="text-muted">Why thousands of Australians trust us to secure their financing.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="text-center p-4">
+                        <div class="fs-1 mb-3 text-gradient"><i class="bi bi-bullseye"></i></div>
+                        <h5 class="fw-bold">Personalised Match</h5>
+                        <p class="text-muted small">We analyze your unique profile and match you with the lender most likely to approve you with the best rate.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center p-4">
+                        <div class="fs-1 mb-3 text-gradient"><i class="bi bi-shield-lock-fill"></i></div>
+                        <h5 class="fw-bold">Protect Your Credit</h5>
+                        <p class="text-muted small">Getting an initial quote with Velox doesn't impact your credit score. We do the heavy lifting safely.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center p-4">
+                        <div class="fs-1 mb-3 text-gradient"><i class="bi bi-people-fill"></i></div>
+                        <h5 class="fw-bold">We Work For You</h5>
+                        <p class="text-muted small">Unlike banks, we don't push one product. We are independent brokers dedicated to finding your best outcome.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-5 bg-light-theme" id="faq">
+        <div class="container py-5">
+            <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+                <h2 class="fw-bold mb-3">Frequently Asked <span class="text-gradient">Questions</span></h2>
+                <p class="text-muted">Everything you need to know about getting a loan with Velox Credit.</p>
+            </div>
+            
+            <div class="accordion mx-auto" id="faqAccordion" style="max-width: 800px;">
+                <!-- FAQ 1 -->
+                <div class="accordion-item shadow-sm">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            Does getting a quote affect my credit score?
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-muted small">
+                            No. Your initial inquiry and quote with Velox Credit uses a "soft" credit check that does not leave a mark on your credit file. A hard inquiry is only performed once you choose a lender and give formal consent to submit your application.
+                        </div>
+                    </div>
+                </div>
+                <!-- FAQ 2 -->
+                <div class="accordion-item shadow-sm">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            How long does approval take?
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-muted small">
+                            For personal and car loans, approvals can often be secured within 2-24 hours. Home loans and complex business structures generally take longer depending on the lender. We pride ourselves on pushing for the fastest possible turnaround times.
+                        </div>
+                    </div>
+                </div>
+                <!-- FAQ 3 -->
+                <div class="accordion-item shadow-sm">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                            Do you charge a broker fee?
+                        </button>
+                    </h2>
+                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-muted small">
+                            In most cases, we do not charge you an upfront fee. We are paid a commission by the lender upon successful settlement of your loan. In complex commercial or bad-credit scenarios where a mandate fee applies, this will be fully disclosed and agreed upon before any work begins.
+                        </div>
+                    </div>
+                </div>
+                <!-- FAQ 4 -->
+                <div class="accordion-item shadow-sm">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                            Can I get a loan if I am self-employed?
+                        </button>
+                    </h2>
+                    <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-muted small">
+                            Absolutely. We have specialized lenders on our panel who offer "Low Doc" and alternative income verification loans perfectly suited for self-employed individuals and small business owners.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Required Ad Disclosures -->
+    <footer>
+        <div class="container">
+            <div class="row mb-5 g-4">
+                <div class="col-lg-4">
+                    <h4 class="fw-bold text-white mb-3">VELOX <span style="color: var(--theme);">CREDIT</span></h4>
+                    <p class="small opacity-75 pe-lg-4">Australia's customer-first loan brokerage. We match you with the right lender from a panel of 60+ — fast, secure, and 100% online.</p>
+                    
+                    <!-- Physical Address (CRUCIAL for Google Ads Policy) -->
+                    <div class="small opacity-75 mt-4">
+                        <strong>Location:</strong><br>
+                        Melbourne, Victoria, Australia<br>
+                        <strong>Email:</strong> support@veloxpays.com
+                    </div>
+                </div>
+                <div class="col-lg-2 col-6">
+                    <h5>Products</h5>
+                    <ul>
+                        <li><a href="#">Home Loans</a></li>
+                        <li><a href="#">Car Finance</a></li>
+                        <li><a href="#">Personal Loans</a></li>
+                        <li><a href="#">Business Loans</a></li>
+                        <li><a href="#">Asset Finance</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-6">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Broker Network</a></li>
+                        <li><a href="#">Contact Support</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5>Legal & Compliance</h5>
+                    <ul>
+                        <!-- Crucial links for Meta/Google Ads -->
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Credit Guide</a></li>
+                        <li><a href="#">Target Market Determinations</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Financial Disclosures (CRUCIAL for Meta/Google Financial Policies) -->
+            <div class="compliance-text">
+                <strong>Important Legal and Advertising Disclosures:</strong><br>
+                © 2026 Velox Credit is the trading name of VeloxPays Pty. Ltd. (A.C.N 682 328 365). Australian Credit Licence (ACL) #XXXXXX.<br><br>
+                
+                <strong>*Rates & Terms:</strong> The interest rates, fees, and repayment terms vary depending on the specific lender, your credit history, income, and the asset being financed. Minimum repayment period is generally 1 year, and the maximum repayment period is up to 30 years (for home mortgages) or 7 years (for personal/auto loans). The Annual Percentage Rate (APR) across our lender panel currently ranges from 5.99% p.a. to 29.99% p.a. <br><br>
+
+                <strong>Representative Example:</strong> A secured personal loan of $30,000 over 5 years (60 months) at an interest rate of 6.99% p.a. (Comparison rate 7.50% p.a.) will require a monthly repayment of $594. The total amount payable over the term, including interest and estimated establishment fees, is $35,640. This is a representative example only; your actual rate and repayments will depend on your individual circumstances.<br><br>
+                
+                <strong>General Advice Warning:</strong> The information provided on this landing page is general in nature and does not constitute personal financial advice. It has been prepared without taking into account your specific objectives, financial situation, or needs. Before acting on any information, you should consider the appropriateness of the information provided and the nature of the relevant financial product having regard to your objectives, financial situation and needs. All applications are subject to the specific lender's standard credit approval criteria. "No credit hit" refers to the initial assessment; formal applications will result in an inquiry on your credit file.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom Scripts: Calculator & Form Submission -->
+    <script>
+        // Loan Calculator Script
+        function calculateLoan() {
+            const amountInput = document.getElementById('calcAmount').value;
+            const rateInput = document.getElementById('calcRate').value;
+            const yearsInput = document.getElementById('calcYears').value;
+
+            const principal = parseFloat(amountInput);
+            const annualRate = parseFloat(rateInput);
+            const years = parseFloat(yearsInput);
+
+            if (isNaN(principal) || isNaN(annualRate) || isNaN(years) || principal <= 0) {
+                document.getElementById('calcMonthlyResult').innerText = "$0.00";
+                return;
+            }
+
+            // Math: M = P [ r(1 + r)^n ] / [ (1 + r)^n - 1 ]
+            const monthlyRate = (annualRate / 100) / 12;
+            const totalPayments = years * 12;
+
+            let monthlyPayment = 0;
+            if (annualRate === 0) {
+                monthlyPayment = principal / totalPayments;
+            } else {
+                const mathPower = Math.pow(1 + monthlyRate, totalPayments);
+                monthlyPayment = (principal * monthlyRate * mathPower) / (mathPower - 1);
+            }
+
+            const totalAmountPaid = monthlyPayment * totalPayments;
+            const totalInterestPaid = totalAmountPaid - principal;
+
+            // Update UI
+            document.getElementById('calcMonthlyResult').innerText = formatCurrency(monthlyPayment);
+            document.getElementById('calcTotalPrincipal').innerText = formatCurrency(principal);
+            document.getElementById('calcTotalInterest').innerText = formatCurrency(totalInterestPaid);
+        }
+
+        function formatCurrency(num) {
+            return '$' + num.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        // Initialize calculator on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            calculateLoan();
+
+            // Form Handling
+            var form = document.getElementById('lead-form');
+            if (form) {
+                form.addEventListener('submit', function(e){
+                    e.preventDefault();
+                    var data = Object.fromEntries(new FormData(e.target));
+                    var params = new URLSearchParams({
+                        name: data.name || '',
+                        email: data.email || '',
+                        phone: data.phone || '',
+                        product: data.product || ''
+                    });
+                    // For demo purposes
+                    alert("Form validated and ready to submit to backend!");
+                });
+            }
+        });
+    </script>
+</body>
+</html>
